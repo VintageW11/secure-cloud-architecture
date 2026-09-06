@@ -2,9 +2,9 @@
 
 ## Student Information
 
-Name: (add your name)
-Section: (add your section)
-Course: (add your course)
+Name: Vino, Rodrigo Jr. D.
+Section: CCIS7E
+Course: BSIT- Network Admin
 Date: September 6, 2026
 
 ## Project Description
