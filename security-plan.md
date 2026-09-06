@@ -100,27 +100,13 @@ Encryption helps protect records if traffic is intercepted or if a storage volum
 
 These activities should be recorded:
 
-- Successful and failed login attempts
-- Who viewed or changed student records
-- Changes to IAM users, roles, and permissions
-- Firewall / security group changes
-- Database connection attempts
-- Backup success and failure events
-
-Logs should be stored in a protected location that regular application users cannot modify.
+- Successful and failed login attempts, Who viewed or changed student records, Changes to IAM users, roles, and permissions, Firewall / security group changes, Database connection attempts, and Backup success and failure events. Logs should be stored in a protected location that regular application users cannot modify.
 
 ## Monitoring
 
 Suspicious activity that should be monitored includes:
 
-- Repeated failed logins
-- Access attempts to the database from the Internet
-- Unusual traffic volume against the load balancer
-- Privilege changes outside normal hours
-- Application servers becoming unhealthy
-- Backup jobs failing
-
-Alerts should notify administrators so they can respond quickly.
+- Repeated failed logins, Access attempts to the database from the Internet, Unusual traffic volume against the load balancer, Privilege changes outside normal hours, Application servers becoming unhealthy, and Backup jobs failing. Alerts should notify administrators so they can respond quickly.
 
 ## Backup
 
@@ -154,11 +140,11 @@ Each role receives only the access needed for that role. Administrator access is
 | Database access rules | Customer |
 | Backups | Shared (provider may offer backup tools; the customer must enable, configure, protect, and test backups of student data) |
 
-## What does Security OF the Cloud mean?
+1. ## What does Security OF the Cloud mean?
 
 Security of the cloud is the provider's responsibility. The provider protects the physical buildings, power, hardware, hypervisors, and the global infrastructure that runs cloud services.
 
-## What does Security IN the Cloud mean?
+2. ## What does Security IN the Cloud mean?
 
 Security in the cloud is the customer's responsibility. The customer must configure accounts, IAM, networks, firewalls, encryption, the application, database access, and the protection of student data.
 
@@ -166,42 +152,42 @@ Security in the cloud is the customer's responsibility. The customer must config
 
 # Architecture Questions
 
-## Which resource should be directly accessible from the Internet?
+3. ## Which resource should be directly accessible from the Internet?
 
 The CDN and the load balancer should be directly accessible from the Internet. Application servers and the database should not.
 
-## Why should the database remain private?
+4. ## Why should the database remain private?
 
 The database holds student personal information. Keeping it private reduces the chance that attackers on the Internet can reach it, scan it, or steal records.
 
-## Why should users not connect directly to the database?
+5. ## Why should users not connect directly to the database?
 
 Users should only use the application. Direct database access bypasses login checks, input validation, and logging in the application. It also makes it easier to expose or change records by mistake.
 
-## What is the purpose of a load balancer?
+6. ## What is the purpose of a load balancer?
 
 A load balancer spreads incoming requests across multiple application servers, performs health checks, and provides a single public entry point so users do not connect to individual servers.
 
-## What happens if one application server fails?
+7. ## What happens if one application server fails?
 
 The load balancer stops sending traffic to the failed server and continues sending requests to healthy servers. The application can remain available instead of going fully offline.
 
-## What is the purpose of a CDN?
+8. ## What is the purpose of a CDN?
 
 A CDN caches static content close to users so pages load faster and origin servers handle less traffic.
 
-## Why should administrator accounts use MFA?
+9. ## Why should administrator accounts use MFA?
 
 Administrator accounts can change the whole environment. MFA adds a second proof of identity so a stolen password alone is not enough to take over the account.
 
-## Why should administrator access not be given to every employee?
+10. ## Why should administrator access not be given to every employee?
 
 Administrator access is high risk. If every employee has it, a single compromised or careless account can delete data, open the database to the Internet, or disable security controls. Least privilege limits damage.
 
-## Why are logging and monitoring important?
+11. ## Why are logging and monitoring important?
 
 Logging creates a record of who did what. Monitoring uses those records and system health signals to detect attacks, failures, and misconfigurations so administrators can respond before a small issue becomes a major breach.
 
-## Why are backups important?
+12. ## Why are backups important?
 
 Backups make it possible to recover student records after deletion, corruption, ransomware, or infrastructure failure. Without backups, lost data may be unrecoverable.
